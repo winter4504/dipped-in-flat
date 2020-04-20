@@ -1,4 +1,4 @@
-## Java
+=Java
 
 - javac
 
@@ -16,16 +16,17 @@ System.out.println();
 //创建键盘扫面器对象
 java.util.Scanner s = new java.util.Scanner(System.in);
 //调用Scanner对象next()方法接收用户键盘输入
-String userInputContent = s.next();//对应String//程序到这里停下来等你输入
+String userInputContent = s.next();// 对应String// 程序到这里停下来等你输入
 System.out.println(userInputContent);
 //以int形式接收数字
 int number = s.nextInt();//对应int//程序到这里停下来等你输入
+Srting name = s.nextLine();//字符串
 System.out.println(number);
 
 System.out.printf("字符串：%2$s，%1$d的十六进制数：%1$#x", i, s);  // "X$" %变量位置$变量类型。  
 ```
 
-#### next()与nextLine()区别
+- #### next()与nextLine()区别
 
 next():
 
@@ -54,7 +55,8 @@ ctrl + /
 ctrl + shift + /
 ```
 
-### public class  和  class
+- ### public class  和  class
+
 
 - 一个java源文件可以定义多个 class 
 - 一般只定义一个 class
@@ -99,7 +101,7 @@ ctrl + shift + /
 
 - 不同数据不同类型不同空间
 
-- 声明+/*赋值*/才能访问
+- 声明+赋值才能访问
 
 - 基本规律和C没啥区别
 
@@ -107,79 +109,108 @@ ctrl + shift + /
 
   ##### 分类
 
-- 局部变量
+- ==局部变量==
 
-- 成员变量（没有赋值系统会默认赋值）
+- ==成员变量==  （没有赋值系统会默认赋值）
 
   - 实例变量 修饰符没有static
   - 静态变量 修饰符有static **存储在方法区内存**
 
-- 类体里面只能定义变量
+- 类体里面只能定义（成员）变量
+
+- **==成员变量从属于对象==**
+
+  **==静态变量从属于类==**
+
+  **==局部变量从属于语块==**
 
 ### VII 数据类型
 
 - 分配空间不同
 
 - ##### 基本数据类型
-  
+
   整数型: byte,short,int,long
   浮点型: float,double
   布尔型: boolean
-  
+
 - ##### 引用数据类型
-  
-    类
-    接口
-    数组
-    "abc" //字符串
-    String s = "abc"
-    String --> 字符串类型
-    String username = " Winter ";
-    System.out.println("Welcome" + username + "come back");
-    
-    ```java
-    String.class
-    System.class
-        
-    User.class
-    Product.class
-    int age = 10;
-    String username = "zhangsan";
-    那我也可以：
-    Students s = ???;
-    ```
-    
-    
-    
+
+  类
+  接口
+  数组
+  "abc" //字符串
+  String s = "abc"
+  String --> 字符串类型
+  String username = " Winter ";
+  System.out.println("Welcome" + username + "come back");
+
+  ```java
+  String.class
+  System.class
+      
+  User.class
+  Product.class
+  int age = 10;
+  String username = "zhangsan";
+  那我也可以：
+  Students s = ???;
+  ```
+
+- **任意精度的整数和浮点数运算**
+
+  import java.math.BigInterger 整数
+
+  import java.math.BigDecimal 浮点
+
+  ```java
+  BigDecimal bd = BigDecimal. valueOf(1.0);
+  bd = bd.subtract(BigDecimal. valueOf(0.1));
+  bd = bd.subtract(BigDecimal. valueOf(0.1));
+  bd = bd.subtract(BigDecimal. valueOf(0.1));
+  bd = bd.subtract(BigDecimal. valueOf(0.1));
+  bd = bd.subtract(BigDecimal. valueOf(0.1));
+  System. outprintln(bd);// 0.5
+  System. outprintln(1.0- 0.1 - 0.1 - 0.1 - 0.1 - 0.1);// 0.500000000000000
+  ```
+
 - ##### 数据类型空间和默认值
 
-    |         |      |        |              |
-    | ------- | ---- | ------ | ------------ |
-    | byte    | 1    | 0      | -128~127     |
-    | short   | 2    | 0      | -32768~32767 |
-    | int4    | 4    | 0      | 2147483648   |
-    | long    | 8    | 0L     |              |
-    | float   | 4    | 0.0    |              |
-    | double  | 8    | 0.0    |              |
-    | boolean | 1    | false  |              |
-    | char    | 2    | \u0000 | 0~65535      |
+  |         |      |        |              |
+  | ------- | ---- | ------ | ------------ |
+  | byte    | 1    | 0      | -128~127     |
+  | short   | 2    | 0      | -32768~32767 |
+  | int     | 4    | 0      | 2147483648   |
+  | long    | 8    | 0L     |              |
+  | float   | 4    | 0.0    |              |
+  | double  | 8    | 0.0    |              |
+  | boolean | 1    | false  |              |
+  | char    | 2    | \u0000 | 0~65535      |
 
-    0开始：八进制
+  八进制：0开头
 
-    0x开始：16进制
+  16进制：0x/0X开头
+
+  二进制：0b/0B开头
+
+  long型：数字后加L/l
+
+  float型：f/F
+
+  double型：d/D
 
 - ##### 字符编码ASCTT：支持英文
-  
-    'a'-->97
-    'A'-->65
-    '0'-->48
-    
+
+  'a'-->97
+  'A'-->65
+  '0'-->48
+
 - ##### 原码反码补码
-  
-    1100110011		原
-    1011001100		反 除了符号位取负数
-    1011001101		补 反+1
-    正数三个码是一样的
+
+  1100110011		原
+  1011001100		反 除了符号位取负数
+  1011001101		补 反+1
+  正数三个码是一样的
 
 1. #### char 可以存一个字符，一个中文
 
@@ -201,17 +232,18 @@ native2ascii --> 中文转编码
 
 控制台输入命令回车，输入中文
 
-2. ### 转义字符（C的逃逸字符）
+2. #### 转义字符（C的逃逸字符）
 
-```java
- \b		退格
- \n		换行
- \r		回车
- \t		制表
- \"		双引号
- \'		单引号
- \\		反斜杠
-```
+   ```java
+    \b		退格
+    \n		换行
+    \r		回车
+    \t		制表
+    \"		双引号
+    \'		单引号
+    \\		反斜杠
+    //要放在单引号或者双引号里面
+   ```
 
 3. #### 整数及其精度损失
 
@@ -221,7 +253,7 @@ native2ascii --> 中文转编码
 ==所以 long = 2147483648 或以上要写 long = 2147483648L==
 强制类型转换 ('变量名')变量/数字 可能会损失精度
 
-4. #### float 浮点型
+4. float 浮点型
 
 float	单精度
 double	双精度
@@ -232,12 +264,13 @@ double	双精度
 *SE类库字节码：\jre\lib\rt.jar
 *SE类库原码：\jdkx.x.x\src.zip
 
-5. #### bollen 布尔型
+5. bollen 布尔型
 
 只有两个值 true , false
 底层存储是 0 和 1 
 
-6. #### String
+6. String
+
    在代码中遇到字符串常量时，这里的值是"Hello world!"，编译器会使用该值创建一个String对象。
 
    和其它对象一样，可以使用关键字和构造方法来创建String对象。
@@ -252,15 +285,15 @@ double	双精度
       }
    }
    ```
-   
+
    字符串长度
-   
+
    用于获取有关对象的信息的方法称为访问器方法。
-   
+
    **String类的一个访问器方法是length()方法，它返回字符串对象包含的字符数。**
-   
+
    下面的代码执行后，len变量等于17:
-   
+
    ```java
    public class StringDemo {
    
@@ -271,8 +304,8 @@ double	双精度
       }
    }
    ```
-   
-7. #### 数据类型转换
+
+7. 数据类型转换
 
    除了 boolean 都能转
 
@@ -303,7 +336,7 @@ double	双精度
   两边算子都要布尔类型
   短路与存在==短路==现象（ 判断出 false 后后面表达式不再执行）
   短路或存在==短路==现象（ 判断出 true 后后面表达式不再执行）
-  
+
 - ```java
   class VarTest
   {
@@ -325,7 +358,7 @@ double	双精度
 - 字符串连接运算符
 
   1.  加法运算
-  	两边都是数字
+      两边都是数字
   2.  字符串连接运算
       只要有一边是字符串
 
@@ -348,7 +381,8 @@ c = sex? 'man' : "woman"; //不能一边字符一边串赋给一个字符
 System.out.println( sex ? "man" : 'woman');//但是在 println 可以
 ```
 
-赋值运算符
+- 赋值运算符
+
 
 ```java
 =		+=
@@ -357,9 +391,10 @@ byte x = 0;
 z += 128;// z = (int)(z+128)     
 不改变类型
 System.out.println( z );//-128
+
 ```
 
-'**自动做强制类型转换**，损失精度'
+**自动做强制类型转换，损失精度**
 
 **String**--> 字符串类型
 
@@ -377,10 +412,12 @@ System.out.println( z );//-128
   A | B = 0011 1101
   A ^ B = 0011 0001
   ~A= 1100 0011
+  
   ```
 
-  | ＆   | 按位与操作符，当且仅当两个操作数的某一位都非0时候结果的该位才为1。 | （A＆B），得到12，即0000 1100  |
+  | 符   | 描述                                                         | 例子                           |
   | ---- | ------------------------------------------------------------ | ------------------------------ |
+  | ＆   | 按位与操作符，当且仅当两个操作数的某一位都非0时候结果的该位才为1。 | （A＆B），得到12，即0000 1100  |
   | \|   | 按位或操作符，只要两个操作数的某一位有一个非0时候结果的该位就为1。 | （A \| B）得到61，即 0011 1101 |
   | ^    | 按位异或操作符，两个操作数的某一位不相同时候结果的该位就为1。 | （A ^ B）得到49，即 0011 0001  |
   | 〜   | 按位补运算符翻转操作数的每一位。                             | （〜A）得到-61，即1100 0011    |
@@ -388,51 +425,73 @@ System.out.println( z );//-128
   | >>   | 按位右移运算符。左操作数按位右移右操作数指定的位数。         | A >> 2得到15即 1111            |
   | >>>  | 按位右移补零操作符。左操作数的值按右操作数指定的位数右移，移动得到的空位以零填充。 | A>>>2得到15即0000 1111         |
 
+  - 优先级==（记住非>与>或）==
+
+  | 类别     | 操作符                                     | 关联性   |
+  | :------- | :----------------------------------------- | :------- |
+  | 后缀     | () [] . (点操作符)                         | 左到右   |
+  | 一元     | + + - ！〜                                 | 从右到左 |
+  | 乘性     | * /％                                      | 左到右   |
+  | 加性     | + -                                        | 左到右   |
+  | 移位     | >> >>>  <<                                 | 左到右   |
+  | 关系     | >> = << =                                  | 左到右   |
+  | 相等     | == !=                                      | 左到右   |
+  | 按位与   | ＆                                         | 左到右   |
+  | 按位异或 | ^                                          | 左到右   |
+  | 按位或   | \|                                         | 左到右   |
+  | 逻辑与   | &&                                         | 左到右   |
+  | 逻辑或   | \| \|                                      | 左到右   |
+  | 条件     | ？：                                       | 从右到左 |
+  | 赋值     | = + = - = * = / =％= >> = << =＆= ^ = \| = | 从右到左 |
+  | 逗号     | ，                                         | 左到右   |
+
 ### IX 控制语句
 
 1. 条件
 
-    ```java
-    if (布尔表达式)
-    {
-    }else if (布尔表达式)
-    {
-    }else if (布尔表达式)
-    {
-    }else {
-    }
-    //一个语句完成以后就会跳出整个 if 
-    //从上到下判断
-
-    switch (int 或 String 字面值或变量)
-    {
-        case int 或 String 字面值或变量 :
-            ... ; 
-            break;
-        case int 或 String 字面值或变量 :
-            ...;
-            break;
-        default :
-            ...;
-    }
-    有 break 终止，没有往下走直到遇到 break;
-    匹配不成功就走 default
-    case 后面只能判断 int 和 String (Java 7 开始)
-    byte, short, char, 可以自转
-    ```
+   ```java
+   if (布尔表达式)
+   {
+   }else if (布尔表达式)
+   {
+   }else if (布尔表达式)
+   {
+   }else {
+   }
+   //一个语句完成以后就会跳出整个 if 
+   //从上到下判断
+   
+   switch (int 或 String 字面值或变量)
+   {
+       case int 或 String 字面值或变量 :
+           ... ; 
+           break;
+       case int 或 String 字面值或变量 :
+           ...;
+           break;
+       default :
+           ...;
+   }
+   有 break 终止，没有往下走直到遇到 break;
+   匹配不成功就走 default
+   case 后面只能判断 int 和 String (Java 7 开始)
+   byte, short, char, 可以自转
+   ```
 
 2. 循环
 
-    ```java
-    for ( 初始化表达式 ; 布尔表达式 ; 更新表达式 )｛
-    ｝
-    可以三个都不要
-    先执行初始化，并且只做一次，再判断循环更新
-    先执行循环体后执行更新表达式
-    内外循环变量名不能重名
-    break 跳出
-    continue 可以指定调到哪个循环
-    ```
+   ```java
+   for ( 初始化表达式 ; 布尔表达式 ; 更新表达式 )｛
+   ｝
+   可以三个都不要
+   先执行初始化，并且只做一次，再判断循环更新
+   先执行循环体后执行更新表达式
+   内外循环变量名不能重名
+   break 跳出
+   continue 可以指定调到哪个循环
+   continue outer;
+   outer:
+   ```
 
 3. try catch
 
@@ -446,9 +505,11 @@ System.out.println( z );//-128
    finally {
    最终肯定必须要执行的代码（例如释放资源的代码）
    }
+   
    ```
 
    代码执行的顺序：
+
      * 1.try内的代码从出现异常的那一行开始，中断执行
      * 2.执行对应的catch块内的代码
      * 3.继续执行try catch结构之后的代码
@@ -463,32 +524,32 @@ System.out.println( z );//-128
        *异常类Api：
      * 1。的getMessage（）：获取异常描述信息字符串
      * 2。的toString（）：返回异常类的包路径和类
-   名和异常描述信息字符串  * 3。的printStackTrace（）：除了打印的toString的信息外，还要打印堆栈信息
+       名和异常描述信息字符串  * 3。的printStackTrace（）：除了打印的toString的信息外，还要打印堆栈信息
      * /
 
 ### X 方法
 
-    方法的基础语法
-    方法的重载机制overload
-    方法是一段独立的代码片段
-    方法中不能再定义方法
-    
-    ```java
-    public class MethodTest
-    {
-    //公开 静态 不返回 方法名
-    //(String[] args)：形式参数列表，String[]是引用数据类型
-    //args是局部变量变量名，可随意
-    public static void main(String[] args){
-    MethodTest.sumInt(10,20);
-    }
-    
-    public static void sumInt(int a, int b){
-    int c = a + b;
-    System.out.println( a + " + " + b + " = " + c);
-    }	
-    }
-    ```
+方法的基础语法
+方法的重载机制overload
+方法是一段独立的代码片段
+方法中不能再定义方法
+
+```java
+public class MethodTest
+{
+//公开 静态 不返回 方法名
+//(String[] args)：形式参数列表，String[]是引用数据类型
+//args是局部变量变量名，可随意
+public static void main(String[] args){
+MethodTest.sumInt(10,20);
+}
+
+public static void sumInt(int a, int b){
+int c = a + b;
+System.out.println( a + " + " + b + " = " + c);
+}	
+}
+```
 
 1. #### 语法结构：
 
@@ -497,14 +558,15 @@ System.out.println( z );//-128
 }
 
 2. #### 解释：
+
    1. ###### **修饰符列表:** 
 
-       *不是必须的
-       *暂时统一public static
-       *方法修饰符列表有 static 的时候如何调用法
-       **调用：类名.方法名(实际参数列表)**
+      *不是必须的
+      *暂时统一public static
+      *方法修饰符列表有 static 的时候如何调用法
+      **调用：类名.方法名(实际参数列表)**
 
-   2. ###### **返回值类型**
+3. **返回值类型**
 
        什么是返回值 (例子: 计算器)
        一个数据
@@ -513,14 +575,14 @@ System.out.println( z );//-128
        也可能不返回数据: void
        有 return 执行，所在方法结束
 
-   3. ###### **方法名：**
+4. **方法名：**
 
        合法标识符
        见名知意
        小驼峰命名方式
        最好是动词
 
-   4. ###### **形式参数列表**
+5. **形式参数列表**
 
        形式参数是局部变量： int a
        可以是 0 - n 个, 多个之间用逗号隔开
@@ -529,20 +591,20 @@ System.out.println( z );//-128
            数量相同
            类型对应相同
 
-	#### 3.方法调用 （==一般传过去的是变量保存的值（包括值和地址）==）
+6. 方法调用 （==一般传过去的是变量保存的值（包括值和地址）==）
 
-    类名.方法名
+   类名.方法名
 
-      方法中有 static 名关键字可以省略类名
-      调用其他类的方法要写类名
-      调用方法的程序和方法在同一个类可以不写类名
-      () 必须有
-   
-   ##### 	**有static**的时候：类名 . 方法名(实参列表)
-   
-   ##### 	**没有static**的时候：先new，然后引用 . 方法名(实参列表)【先new对象（跟类名一样）然后 引用 . 方法名】
-   
-   #### 4. 返回值
+     方法中有 static 名关键字可以直接调用
+     调用其他类的方法要写类名
+     调用方法的程序和方法在同一个类可以不写类名
+     () 必须有
+
+  有static的时候：类名 . 方法名(实参列表)
+
+​	**没有static**的时候：先new，然后引用 . 方法名(实参列表)【先new对象（跟类名一样）然后 引用 . 方法名】
+
+4. #### 返回值
 
 
 ```java
@@ -557,7 +619,7 @@ public static int divide(int a, int b){
 return 下面语句永远不执行
 void 中的 return 作用是==终止方法==(包括main)
 
-#### 5. 方法、内存、数据结构
+5. #### 方法、内存、数据结构
 
 - ##### 方法只定义不调用不会执行，并且JVM不会给方法分配“运行所属内存空间”
 
@@ -639,7 +701,7 @@ void 中的 return 作用是==终止方法==(包括main)
 
 - ##### 字体红色是 JavaSE 的类名(也是标识符)
 
-#### 6. 方法重载  overload
+#### 方法重载  overload
 
 - 不使用方法重载机制，类似的方法要重复写，分开调用
 
@@ -670,7 +732,7 @@ public class OverloadTest
 ```
 
 - 方法重载机制让程序员使用功能相似的方法跟使用同一个方法一样
--  这时候程序靠变量类型区分方法
+- 这时候程序靠变量类型区分方法
 - 功 能不同要让两个方法名字不同
 
 ```java
@@ -696,21 +758,21 @@ public class OverloadTest
 }
 ```
 
-1. 功能相似的时候尽可能让方法名相同
+    1. 功能相似的时候尽可能让方法名相同
+    
+    2. 在同一个类，方法名相同参数列表不同可以方法重载
+    
+       ==方法重载只和名和参数列表有关==
+    
+    3. ==方法重载和方法返回值类型无关，和修饰符列表无关==
 
-2. 在同一个类，方法名相同参数列表不同可以方法重载
+7. #### 方法递归
 
-   ==方法重载只和名和参数列表有关==
+   方法自身调用自身叫递归
 
-3. ==方法重载和方法返回值类型无关，和修饰符列表无关==
+   非常占内存，能不用就不用
 
-#### 7. 方法递归
-
-1. 方法自身调用自身叫递归
-
-2. 非常占内存，能不用就不用
-
-3. 发生错误（死循环）
+   发生错误（死循环）
 
    java.lang.StackOverflowError
 
@@ -718,11 +780,11 @@ public class OverloadTest
 
    JVM停止工作
 
-4. 递归必修有结束条件
+   递归必需有结束条件
 
-5. 有些功能必修用，比如目录拷贝
+   有些功能必修用，比如目录拷贝
 
-6. 递归求和
+8. 递归求和
 
    ```java
    public class RecursionTest
@@ -743,7 +805,31 @@ public class OverloadTest
    }
    ```
 
-### XI 面向对象
+#### 方法重写 override
+
+   在子类建立和父类同名同修饰的方法，会覆盖父类方法
+
+   **方法名、形式参数列表相同**
+
+   返回值类型和声明异常类型，**子类小于等于父类**
+
+   访问权限**子类大于等于父类**
+
+9. #### toString();
+
+   直接打印某对象就是调用 toString（）
+
+   返回变量位置和地址
+
+   ==经常拿来重写==
+
+10. #### u1.equals(u2)
+
+    默认比较对象内容，相同返回true，否则false
+
+    也是拿来重写的
+
+### XI 面向对象（类）
 
 1. #### 面向对象和过程的区别
 
@@ -779,62 +865,62 @@ public class OverloadTest
 4. #### 类和对象的概念
 
    1. 类是模板，概念，**抽象的结果**
-   
+
       类代表一类事物
 
       现实世界a和b之间有共同特征进行抽象总结出模板成为类
 
    2. 对象是实际存在的个体，在现实世界实际存在
-   
+
    3. ###### 软件开发过程
-   
+
       观察现实世界寻找对象
-   
+
       发现对象共同特征
-   
+
       形成类
-   
+
       用代码表述一个类
-   
+
       通过类创建对象
-   
+
       对象协作形成系统
-   
+
    4. 类--实例化-->对象
-   
-   5. ###### 对象又称为实例/instance
-   
+
+   5. ###### 对象又称为实例 / instance
+
    6. 对象--抽象-->类
-   
+
    7. **类描述的是对象的共同特征（如身高）**
-   
+
       **特征在访问的时候必须先创建对象，通过对象访问特征**
-   
+
       *因为特征具体在对象上值不同**
-   
+
       状态动作具体到对象上结果可能不同
-   
+
       对象之间有共同特征，但是具体到对象上有数据差异
-   
+
    8. 类的描述：状态+动作
-   
+
       状态：==类的属性==（属性描述状态）
-   
+
       动作：==类的方法==（方法描述动作）
-   
+
    9. 类的定义【从这里开始写代码】
-   
+
       属性通常采用定义变量来完成定义
-   
+
       ```java
       int no;
       String name;
       boolean sex;
       int age
       ```
-   
+
    10. 引用数据类型
-   
+
        ```java
        String.class
        System.class
@@ -846,7 +932,7 @@ public class OverloadTest
        那我也可以：
        Students s = ???;
        ```
-   
+
 5. #### 对象的创建和使用
 
    1. example
@@ -902,9 +988,9 @@ public class OverloadTest
       读取：引用.变量名（引用即上面 student 后面的 s）
 
       修改：引用.变量名 = 值
-   
+
    5. 引用的套娃
-   
+
       ```java
       public class Address
       {
@@ -936,9 +1022,9 @@ public class OverloadTest
       	}
       }
       ```
-   
+
    6. 从两条路走到city
-   
+
       ```java
       public class Address
       {
@@ -949,7 +1035,7 @@ public class OverloadTest
       public class Student
       {
       	int no;
-      boolean sex;
+      	boolean sex;
       	String name;
       	Address addr;
       }
@@ -973,9 +1059,9 @@ public class OverloadTest
       	}
       }
       ```
-   
+
    7. 丈夫和妻子
-   
+
       ```java
       public class Test
       {
@@ -1009,16 +1095,230 @@ public class OverloadTest
       	Wife w;
       }
       ```
+
+#### 类的继承
+
+   ```java
+   class 类名 extends 继承的类名{
    
+   }
+   ```
+
+   继承前一个类的代码
+
+   只能一个类（接口才）
+
+   默认继承 Object 类
+
+##### instanceof 关键字
+
+   可以使用 **instanceof** 运算符来检验 dog 对象是否是 Animal类/Mammal类 的一个实例。
+
+   ```java
+   interface Animal{}
+   
+   class Mammal implements Animal{}
+   
+   public class Dog extends Mammal{
+      public static void main(String args[]){
+   
+         Mammal m = new Mammal();
+         Dog d = new Dog();
+   
+         System.out.println(m instanceof Animal);
+         System.out.println(d instanceof Mammal);
+         System.out.println(d instanceof Animal);
+      }
+   } 
+   ```
+
+7. #### super.
+
+   访问父类被覆盖的方法
+
+   super.方法  super.变量名
+
+   **==构造方法（器）的第一句总是 super.父类的被覆盖方法名()==**（即使你没写）
+
+   **==不能用于 static 方法==**
+
+8. #### 方法重写 override
+
+   在子类建立和父类同名同修饰的方法，会覆盖父类方法
+
+   **方法名、形式参数列表相同**
+
+   方法的返回值返回值类型和声明异常类型，**子类小于等于父类**
+
+   访问权限**子类大于等于父类**
+
+9. #### 静态初始化块
+
+   在类加载时候执行
+
+   从最上面的父类一直执行到子类的
+
+   ```java
+   static{
+       类的初始化执行语句
+   }
+   ```
+
+10. #### 多态（和方法重载类似）
+
+    一个方法的调用，由于对象不同可能会有不同的行为。现实中同一个方法具体实现完全不同
+
+    - 多态指方法的多态
+
+    - 三个必要条件：继承，方法重写，父类引用指向子类对象
+
+    - 父类引用指向子类对象之后，用该父类引用调用子类重写方法，多态出现
+
+    - 新的一个方法，引用父类和子类的方法，根据传入数据的不同调用不同的方法。
+
+      ```java
+      public  class TestPolym{
+          public static void main(String[] args) {
+              Animals a = new Animal();
+              a.shout(); // “叫了一声”
+              Dog d = new Dog();
+              d.shout(); // “汪汪汪”
+          }
+      }
+      ```
+
+      
+
+11. #### 对象转型
+
+    - 父类 d = new 子类（）；向上自动转型
+    - 子类 d2 = （子类）d；向下强制；
+    - 同级子类不能转
+
+#### 抽象类 abstract
+
+抽象类**不能用来实例化对象**（new），声明抽象类的唯一目的是为了将来对该类进行扩充。子类必须实现（方法）
+
+一个类不能同时被abstract和final修饰。如果一个类包含抽象方法，那么该类一定要声明为抽象类，否则将出现编译错误。
+
+抽象类可以包含抽象方法和非抽象方法。
+
+#### 接口类  interface
+
+1. **==抽象的抽象==**
+2. 接口不提供任何实现（具体方法），接口不能用于实例化对象。
+3. 接口没有构造方法。
+4. 接口中所有的方法必须是抽象方法。
+5. 接口不能包含成员变量，除了static 和 final 变量。（默认加public static final）
+6. 接口不是被类继承了，而是要被类实现。
+7. 接口支持多重继承。
+
+#### 实现类 implements
+
+1. 实现类可以实现多个父接口
+2. 必修全部实现接口的方法，否则必须定义为抽象类
+
+#### 内部类
+
+为外部类服务
+
+1. 成员内部类（可以使用private，default，protected，public等等任意修饰）
+
+   - 非静态内部类
+
+     非静态内部类必须寄存在一个外部类对象里。==（有内必有外）== 因此,如果有一个非静态内部类对象那么一定存在对应的外部类对象。非静态内部类对象单独属于外部类的某个对象。
+
+     非静态内部类可以直接访问外部类的成员,但是外部类不能直接访问非静态内部类成员。==里面可以看外面，外面不能看里面==，可以有一个很好的封装
+
+     非静态内部类不能有静态方法、静态属性和静态初始化块。
+
+     外部类的静态方法、静态代码块不能访问非静态内部类，包括不能使用非静态内部类定义变量、创建实例
+
+   - 静态内部类
+   
+     当一个静态内部类对象存在，并不一定存在对应的外部类对象。因此 ,静态内部类的实例方法（对象的方法，没有static）不能直接访问外部类的实例方法。
+   
+     静态内部类看做外部类的一个静态成员。因此 ,外部类的方法中可以通过 “静态内部类 . 名字” 的方式访问静态内部类的静态成员,通过new静态部类()访问静态内部类的实例。
+
+
+```java
+ public class TestInnerClass {
+     public static void main(String[] args){
+         //创建内部类对象（有内必有外）
+         Outer.Inner inner = new Outer().new Inner();
+         Inner.show();
+     }
+ }
+ class Outer {
+     private int age = 10;
+     
+     public void testOuter(){
+     // 下面是一个（成员）内部类
+         class Inner {
+             int age = 20;
+             public void show(){
+                 System. out.println(Outer.this.age);
+                 System.out.pringln(this.age);
+         	}        }
+     }
+ }
+
+public class Staticinner {
+	public static void main(String[] args) {
+		Outer2.Inner2 inner = new Outer2.Inner2();
+		int c = inner.b;
+		int a = Outer2.Inner2.a;
+		System.out.println(a);
+		System.out.println(c);
+	}
+}
+class Outer2{
+    // 静态内部类（new的方式不一样）
+    // 静态和非静态变量访问方式不一样
+	static class Inner2{
+    	int b = 1;
+		static int a = 1;
+	}
+}
+```
+
+2. 匿名内部类
+
+   适合只使用一次的类，例如键盘监听
+
+   - 没有访问修饰符
+   - 没有构造方法
+
+   ```java
+   new 父类构造器（实参列表）\实现接口（）｛
+   	// 类体
+   ｝
+   ```
+
+   
+
+3. 局部内部类
 
 ### XII 面向对象的封装性
 
 1. #### 封装机制
 
    - 封装之后，对于那个事物来说，看不到这个事物比较复杂的那一面，只能看到该事物简单的那一面。复杂性封装，对外提供简单的操作入口。照相机就是个很好的封装的案例，照相机的实现原理非常复杂，但是对于使用照相机的人来说，操作起来是非常方便的是非常便捷的。还有像电视机也是封装的，电视机内存实现非常复杂，但是对于使用者来说不需要关心内部的实现原理，只需要会操作遥控器就行。
+
    - 封装之后才会形成真正的“对象”,真正的“独立体”
+
    - 封装就意味着以后的程序可以重复使用。并且这个事物应该适应性比较强,在任何场合都可以使用。
+
    - 封装之后，对于事物本身，提高了安全性。[安 全级别高]
+
+     | 修饰符    | 同一个类 | 同一个包 | 子类 | 所有 |
+     | --------- | -------- | -------- | ---- | ---- |
+     | private   | +        |          |      |      |
+     | default   | +        | +        |      |      |
+     | protected | +        | +        | +    |      |
+     | public    | +        | +        | +    | +    |
+
+     
 
 2. #### 数据私有化
 
@@ -1039,6 +1339,7 @@ public class OverloadTest
      age = a;
      }
      没有static
+     
      ```
 
      
@@ -1050,6 +1351,7 @@ public class OverloadTest
      return age ;
      }
      没有static
+     
      ```
 
      可想一下，-一个属性通常访问的时候包括几种访问形式?
@@ -1063,7 +1365,7 @@ public class OverloadTest
      user.setAge();
 
      user.intAge
-     
+
      ```java
      public class Customer {
      	private int age;
@@ -1093,9 +1395,9 @@ public class OverloadTest
      	}
      }
      
-     ```
      
-   
+     ```
+
 3. #### 构造方法（和类名一致）
 
    ###### 		创建对象，初始化实例变量内存空间，构造完了new的时候就可以给括号里面加东西了
@@ -1103,37 +1405,38 @@ public class OverloadTest
    1. **构造方法又被称为构造==函数/构造器/Constructor==**
 
    2. 构造方法语法结构:
-   
+
       ```java
       [修饰符列表] 构造方法名 (形式参数列表) {
-      构造方法体;
-   }
+      	构造方法体;
+      }
+      
       ```
 
    3. 回顾普通方法的语法结构:
 
       ```java
       [修饰符列表] 返回值类型 方法名 (形式参数列表) {
-      方法体;
-      
+      	方法体;
       }
+      
       ```
 
-   4. 对于构造方法来说，“返回值类型"不需要指定,并且也不能写void, 只要写上void,那么这个方法就成为普通方法了。
+4. 对于构造方法来说，“返回值类型"不需要指定,并且也不能写void, 只要写上void,那么这个方法就成为普通方法了。
 
-   5. 对于构造方法来说，构造方法的方法名必须**==和类名保持一致==**。
-   
+5. 对于构造方法来说，构造方法的方法名必须**==和类名保持一致==**。
+
    6. 构造方法的作用?
       构造方法存在的意义是，通过构造方法的调用，可以**创建对象**。
-   
+
    7. 构造方法应该怎么调用?
-   
+
       普通方法是这样调用的：
-   
+
       ​	**有static**的时候：类名 . 方法名(实参列表)
       ​	**没有static**的时候：引用 . 方法名(实参列表)【先new对象（跟类名一样）然后 引用 . 方法名】
       构造方法：new构造方法名(实参列表)
-   
+
    ```java
    //调用带有static的方法:类名.
    ConstructorTest01.doSome() ;
@@ -1152,103 +1455,27 @@ public class OverloadTest
    System. out.println("do other"); 
    }
    
+   
    ```
+
    
-   
-   
+
    8. 构造方法调用执行之后，有返回值
       每一个构造方法实际上执行结束之后都有返回值，但是这个"return值;"这样的语句不需要写。构造方法结束的时候java程序自动返回值。返回值类型是构造方法所在类的类型。由于构造方法的返回值类型就是类本身，所以返回值类型不需要编写。当一个类中没有定义任何构造方法的话，系统默认给该类提供一个无参数的构造方法，这个构造方法被称为缺省构造器。
    9. 当一个类显示的将构造方法定义出来了，那么系统则不再默认为这个类提供缺省构造器。建议开发中手动的为当前类提供无参数构造方法。因为无参数构造方法太常用了。
-   
+
    ```java
    public User(){
    	
    }
-   ```
    
+   ```
+
    10. 构造方法支持重载机制。在一个类当中编写多个构造方法，这多个构造方法显然已经构成方法重载机制。
 
-### XIII 修饰符
+6. 
 
-1. Java语言提供了很多修饰符，主要分为以下两类：
-
-   - ###### 访问修饰符
-
-   - ###### 非访问修饰符
-
-2. #### 私有访问修饰符-private
-
-   私有访问修饰符是最严格的访问级别，所以被声明为private的方法、变量和构造方法只能被所属类访问，并且类和接口不能声明为private。
-
-   声明为私有访问类型的变量只能通过类中公共的getter方法被外部类访问。
-
-3. #### 公有访问修饰符-public
-
-   被声明为public的类、方法、构造方法和接口能够被任何其他类访问。
-
-   如果几个相互访问的public类分布在不同的包中，则需要导入相应public类所在的包。由于类的继承性，类所有的公有方法和变量**都能被其子类继承**。
-
-4. #### 受保护的访问修饰符-protected
-
-   被声明为protected的变量、方法和构造器能被同一个包中的任何其他类访问，也能够被不同包中的子类访问。
-
-   Protected访问修饰符**不能修饰类和接口**，方法和成员变量能够声明为protected，但是**接口的成员变量和成员方法不能声明为protected**。
-
-   子类能访问Protected修饰符声明的方法和变量，这样就能保护不相关的类使用这些方法和变量。
-
-   - **父类中声明为public的方法在子类中也必须为public。**
-   - **父类中声明为protected的方法在子类中要么声明为protected，要么声明为public。不能声明为private。**
-   - **父类中声明为private的方法，不能够被继承。**
-
-5. #### static修饰符
-
-   - **静态变量：**
-
-     static关键字用来声明独立于对象的静态变量，无论一个类实例化多少对象，它的静态变量只有一份拷贝。静态变量也被称为类变量。局部变量不能被声明为static变量。
-
-   - **静态方法：**
-
-     static关键字用来声明独立于对象的静态方法。**静态方法不能使用类的非静态变量**。静态方法从参数列表得到数据，然后计算这些数据。
-
-6. #### final 修饰符
-
-   - #### final变量
-
-     final变量能被显式地初始化并且**只能初始化一次**（常量）。被声明为final的对象的引用不能指向不同的对象。但是final对象里的数据可以被改变。也就是说final对象的引用不能改变，但是里面的值可以改变。
-
-   - #### final方法
-
-     类中的Final方法可以被子类继承，但是不能被子类修改。
-
-   - #### final类
-
-     final类不能被继承，没有类能够继承final类的任何特性。
-
-7. #### abstract修饰符
-
-   - #### 抽象类
-
-     抽象类**不能用来实例化对象**（new），声明抽象类的唯一目的是为了将来对该类进行扩充。
-
-     一个类不能同时被abstract和final修饰。如果一个类包含抽象方法，那么该类一定要声明为抽象类，否则将出现编译错误。
-
-     抽象类可以包含抽象方法和非抽象方法。
-
-   - #### 抽象方法
-
-     抽象方法是一种没有任何实现的方法，该方法的的具体实现由子类提供。抽象方法不能被声明成final和static。
-
-     **任何继承抽象类的子类必须实现父类的所有抽象方法**，除非该子类也是抽象类。
-
-     如果一个类包含若干个抽象方法，那么该类必须声明为抽象类。抽象类可以不包含抽象方法。
-
-8. #### synchronized修饰符
-
-   synchronized关键字声明的方法同一时间只能被一个线程访问。Synchronized修饰符可以应用于四个访问修饰符。
-
-9. 。。。。
-
-### XIV 数组
+### XIII 数组
 
 1. #### 声明数组变量
 
@@ -1260,22 +1487,42 @@ public class OverloadTest
    double[] myList;         // 首选的方法
    或
    double myList[];         //  效果相同，但不是首选方法
+   mylist = new double[10];
    ```
+
+   数组变量属引用类型，数组也可以看成是对象，数组中的
+   每个元素相当于该对象的成员变量。
 
 2. #### 创建数组
 
-   ```java
    Java语言使用new操作符来创建数组，语法如下：
    arrayRefVar = new dataType[arraySize];
    上面的语法语句做了两件事：
    一、使用dataType[arraySize]创建了一个数组。
    二、把新创建的数组的引用赋值给变量 arrayRefVar。
-   
+
+   ```java
    数组变量的声明，和创建数组可以用一条语句完成，如下所示：
    dataType[] arrayRefVar = new dataType[arraySize];
    
    另外，你还可以使用如下的方式创建数组。
    dataType[] arrayRefVar = {value0, value1, ..., valuek};
+   
+   public class Test02 {
+   public static void main(String[] args) {
+   //静态初始化
+   int[] a= {2,4,65};
+   User[] b ={
+       new User(1001,"高淇"),
+       new User(1002,"张三"),
+       new User(1003,"李四")
+   };
+   //默认初始化
+   double[] myList = {1.9, 2.9, 3.4, 3.5};
+   //动态初始化
+   int[] a = new int[2];
+   a[0] = 1;
+   a[1] = 2;
    
    public class TestArray {
       public static void main(String[] args) {
@@ -1299,11 +1546,12 @@ public class OverloadTest
          System.out.println("Max is " + max);
       }
    }
+   
    ```
 
-3. #### foreach循环
+3. #### for each循环
 
-    JDK 1.5 引进了一种新的循环类型，被称为foreach循环或者加强型循环，它能在不使用下标的情况下遍历数组。 
+   JDK 1.5 引进了一种新的循环类型，被称为foreach循环或者加强型循环，它能在不使用下标的情况下遍历（读取）数组。 
 
    ```java
    public class TestArray {
@@ -1315,9 +1563,10 @@ public class OverloadTest
          }
       }
    }
+   
    ```
 
-### XV 日期时间
+### XIV 日期时间
 
 1. ####  java.util.Date
 
@@ -1341,6 +1590,7 @@ public class OverloadTest
        System.out.println(date);
       }
    }
+   
    ```
 
 2. #### 使用printf格式化日期
@@ -1362,6 +1612,7 @@ public class OverloadTest
         System.out.printf(str);
      }
    }
+   
    ```
 
    | **字符** | **描述**                         | **例子**                     |
@@ -1416,5 +1667,218 @@ public class OverloadTest
          System.out.println("Current Date: " + ft.format(dNow));
       }
    }
+   
    ```
+
+### XV 修饰符和关键字
+
+1. Java语言提供了很多修饰符，主要分为以下两类：
+
+   - ###### 访问修饰符
+
+   - ###### 非访问修饰符
+
+2. #### 私有访问修饰符-private
+
+   私有访问修饰符是最严格的访问级别，所以被声明为private的方法、变量和构造方法只能被所属类访问，并且类和接口不能声明为private。
+
+   声明为私有访问类型的变量只能通过类中公共的getter方法被外部类访问。
+
+3. #### 公有访问修饰符-public
+
+   被声明为public的类、方法、构造方法和接口能够被任何其他类访问。
+
+   如果几个相互访问的public类分布在不同的包中，则需要导入相应public类所在的包。由于类的继承性，类所有的公有方法和变量**都能被其子类继承**。
+
+4. #### 受保护的访问修饰符-protected
+
+   被声明为protected的变量、方法和构造器能被同一个包中的任何其他类访问，也能够被不同包中的子类访问。
+
+   Protected访问修饰符**不能修饰类和接口**，方法和成员变量能够声明为protected，但是**接口的成员变量和成员方法不能声明为protected**。
+
+   子类能访问Protected修饰符声明的方法和变量，这样就能保护不相关的类使用这些方法和变量。
+
+   - **父类中声明为public的方法在子类中也必须为public。**
+   - **父类中声明为protected的方法在子类中要么声明为protected，要么声明为public。不能声明为private。**
+   - **父类中声明为private的方法，不能够被继承。**
+
+5. #### static修饰符
+
+   - **静态变量：**
+
+     static关键字用来声明独立于对象的静态变量，无论一个类实例化多少对象，它的静态变量只有一份拷贝。静态变量也被称为类变量。
+
+     **局部变量不能被声明为static变量**
+
+     静态变量从属于类
+
+   - **静态方法：**
+
+     static关键字用来声明独立于对象的静态方法。**静态方法不能使用类的非静态变量**。静态方法从参数列表得到数据，然后计算这些数据。
+
+6. #### final 修饰符
+
+   - #### final变量
+
+     final变量能被显式地初始化并且**只能初始化一次**（常量）。被声明为final的对象的引用不能指向不同的对象。但是final对象里的数据可以被改变。也就是说final对象的引用不能改变，但是里面的值可以改变。
+
+   - #### final方法
+
+     类中的Final方法可以被子类继承，但是不能被子类修改。
+
+   - #### final类
+
+     final类不能被继承，没有类能够继承final类的任何特性。
+
+7. #### abstract 修饰符
+
+   - #### 抽象类（为子类提供模板和规范）
+
+     - 抽象类**不能用来实例化对象**（new），声明抽象类的唯一目的是为了将来对该类进行扩充。子类必须实现（方法）
+- 一个类不能同时被abstract和final修饰。如果一个类包含抽象方法，那么该类一定要声明为抽象类，否则将出现编译错误。
+  
+     - 抽象类可以包含抽象方法和非抽象方法。
+- 限制子类的设计
+  
+- #### 抽象方法
+  
+  - 抽象方法是一种没有任何实现的方法，该方法的的具体实现由子类提供。抽象方法不能被声明成final和static。
+   - **任何继承抽象类的子类必须实现父类的所有抽象方法**，除非该子类也是抽象类。
+  - 如果一个类包含若干个抽象方法，那么该类必须声明为抽象类。抽象类可以不包含抽象方法。
+  
+8. #### synchronized 修饰符
+
+   synchronized关键字声明的方法同一时间只能被一个线程访问。Synchronized修饰符可以应用于四个访问修饰符。
+
+9. 。。。。
+
+   this
+
+   - 本质：创建好的对象的地址，**==代表当前对象==**
+   - this 指代成员变量
+   - 方法里面调用构造方法调同名构造方法用 this
+   - **==不能用于 static 方法==**
+
+#### static
+
+1. static修饰成员变量从属于类
+
+2. 普通变量和方法从属于对象
+
+3. 静态初始化块
+
+
+#### import
+
+1. 导入包
+
+2. 导入静态属性
+
+   import static java.lang.Math.*;
+
+#### instanceof
+
+instanceof 关键字
+
+可以使用 **instanceof** 运算符来检验Mammal和dog对象是否是Animal类的一个实例。
+
+```java
+interface Animal{}
+
+class Mammal implements Animal{}
+
+public class Dog extends Mammal{
+   public static void main(String args[]){
+
+      Mammal m = new Mammal();
+      Dog d = new Dog();
+
+      System.out.println(m instanceof Animal);
+      System.out.println(d instanceof Mammal);
+      System.out.println(d instanceof Animal);
+   }
+} 
+
+```
+
+| 修饰符    | 同一个类 | 同一个包 | 子类 | 所有 |
+| --------- | -------- | -------- | ---- | ---- |
+| private   | +        |          |      |      |
+| defaut    | +        | +        |      |      |
+| protected | +        | +        | +    |      |
+| public    | +        | +        | +    | +    |
+
+#### implements
+
+- 
+
+
+### XVI 包
+
+1. 包名：域名倒着写
+
+   package  cn.sxt.gao 当前所在的包
+
+2. 包外用类要写包
+
+3. 导入类
+
+   imoprt  xxx.xx.xxx;（同名最好用这个方法）
+
+   import xxx.xx.*;
+
+4. 导入静态属性（静态导入）
+
+   import static java.lang.Math.*;
+
+### XVII 窗口
+
+```java
+import javax.swing.JFrame;
+public class MyGameFrame extends JFame{
+
+Image ball = GameUtil.getImage("images/ball.png");
+public void paint(Graphics g){ // 自动被调用，g相当于画笔
+    Color c = g.getColor();
+    Font f = g.getFont();
+    g.setColor(Color.BLUE);
+    g.drawLine(100,100,300,300);
+    g.drawRect(100,100,300,300);
+    g.drawOvala(100,100,300,300);
+    g.drawString("who am i",100,100);
+    get.setColor(c);
+    get.setFont(c);
+    g.drawImage(ball,250,250,null);
+}
+    
+class PaintThread extends Thread{
+    while(true){
+        repaint();
+        Ghread.sleeo(40);//毫秒w
+    }
+}
+    
+/**
+*初始化窗口
+*/
+public void launchFrame(){
+    this.setTitle("java");// 设置抬头
+    this.setVisible(true);
+    this.setSize(500,500);// 设置大小
+    this.setLocation(300,300);// 设置位置
+	// 让关闭可以关闭
+	this.addWindowListener(new WindowAdapter(){
+        public void windowClosing(windowEvent e){
+            System.exit(0);
+        }
+    });
+}
+
+public static void main(String[] args){
+	MyGameFrame f = new MyGameFrame();
+	f.launchFrame();
+	}
+}
+
+```
 
